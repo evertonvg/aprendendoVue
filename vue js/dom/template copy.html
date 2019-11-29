@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .demo{
+            width:100px;
+            height:100px;
+            
+            background:gray;
+
+        }
+        .caixas{
+            display:flex;
+            justify-content:space-around;
+            flex-direction: row;
+            align-items: center;
+        }
+        .c1{
+            background:red;
+        }
+        .c2{
+            background:green;
+        }
+        .c3{
+            background:blue;
+        }
+        .girar{
+            transform: rotate(45deg);
+        }
+        #efeito{
+            width:100px;
+            height:100px;
+            border:1px solid black;
+        }
+        .destaque{
+            background-color:Red;
+            width:200px !important;
+        }
+        .encolher{
+            background-color:gray;
+            width:50px !important;
+        }
+        .perigo{
+            background:red;
+        }
+        .quadrado{
+            width:100px;
+            height:100px;
+        }
+        .direita{
+            float:right;
+        }
+        .barra-progresso{
+            height:30px;
+            width:200px;
+            border: 1px solid black;
+        }
+        .progresso{
+            background:red;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="app">
+            <p v-once>{{titulo}}</p>  não atualiza mais-->
+            <!-- <p>{{saudacao()}}</p> -->
+            <!-- <a v-bind:href="link" target="_blank">Google</a> -->
+            
+            <!-- v-bind interpola na propriedade html -->
+            <!-- <p v-html="linkHtml"></p> -->
+            <!-- interpola tag html  -->
+        <!-- </div> --> 
+<!-- 1) -->
+<!-- <div id="desafio"> -->
+     <!-- <p> Usando Vue Js = {{nome}} - {{idade}}</p> -->
+
+
+<!-- 2) -->
+<!-- <p>{{idade*3}}</p> -->
+<!-- 3) -->
+<!-- <p>{{Math.random()}}</p> -->
+<!-- 4) -->
+
+    <!-- <img v-bind:src="imagem" alt="" width="300px"> -->
+
+<!-- 5) -->
+<!-- <br> -->
+<!-- <input type="text" v-bind:value="nome"> -->
+<!-- </div> -->
+
+<div id="app">
+   <!-- <p>{{contador}}</p> 
+    <button @click="somar(5, $event )">somar 1</button> 
+    <input type="text" :value="contador"> -->
+    <!-- : = bind e @ = v-on  -->
+    <!-- <button v-on:click="somar(5, $event )">somar 1</button>  -->
+    <!-- <button v-on:click="subtrair(5, $event )">subtrair 1</button>  -->
+    <!-- <p>{{contador >= 10 ? 'maior que 10' : 'menor que 10'}}</p> --> 
+    <!-- v-on evento -->
+
+    <!-- <p v-on:mousemove="atualizarxy">Mouse: {{x}} e {{y}}
+
+        <span v-on:mousemove.stop.prevent>PARAR</span>
+    </p>
+    <a v-on:click.prevent="" href="www.google.com">google</a>
+    <hr>
+    <input type="text" v-on:keyup.enter.alt="exibirAlerta"> --
+    
+     1) -->
+    <!-- <button v-on:click="exibirAlert" >botao</button>
+    <hr> -->
+    <!-- 2) -->
+    <!-- <input type="text" v-on:keyup.enter="valor = $event.target.value " >
+        <p >{{valor}}</p> -->
+        <!-- <hr> -->
+    <!-- 3) -->
+    <!-- <p>{{titulo}}</p> -->
+    <!-- <input type="text" v-model="titulo"> -->
+    <!-- v-bind:value="titulo" v-on:input="titulo = $event.target.value"> -->
+    <!-- <button v-on:click="aumentar">aumentar</button>
+    <button v-on:click="contador2++">aumentar 2</button>
+    <button v-on:click="diminuir">diminuir</button>
+    <p>contador: {{contador}}  |  {{contador2}}</p>
+    <p>resultado: {{resultado}}</p> -->
+
+    <!-- desafio 3 -->
+
+    <!-- 1)
+    <p>valor atual: {{val}}</p>
+    <button @click="val += 5"> soma 5</button>
+    <button @click="val += 1"> soma 1</button>
+    <p>{{result}}</p>
+<hr>
+    2)
+<hr> -->
+    <!-- <div class="caixas">
+        <div class="demo" :class="estilo1"
+        @click="aplicarC1 = !aplicarC1"></div>
+
+        <div class="demo" :class="{c2: aplicarC2}" 
+        @click="aplicarC2 = !aplicarC2"></div>
+
+        <div class="demo" :class="[classeCSS, {girar:aplicarGirar}]" 
+        @click="aplicarC3 = !aplicarC3"></div>
+        <hr>
+        <input type="text" v-model="classeCSS">
+    </div> -->
+    <!-- <div class="caixas">
+        <div class="demo"  :style="{'backgroundColor':cor}"
+        ></div>
+
+        <div class="demo"  :style="[meuEstilo,{height:altura}]"
+        ></div>
+
+        <div class="demo"  
+        ></div>
+        
+        
+    </div>
+    <hr>
+    <input type="text" v-model="cor">
+    <input type="text" v-model="largura"> -->
+    
+
+    <!-- desafio estilo  -->
+    1)
+    <div>
+        <button @click="iniciarEfeito">Iniciar Efeito</button>
+        <div id="efeito" :class="classe1"></div>
+    </div>
+    <hr>
+    2)
+    <div :class="[{perigo}, 'quadrado']">Estou sem classe CSS</div>
+    <hr>
+    3)
+    <input type="text" v-model="classe3">
+    <div :class="classe3"></div>
+    <hr>
+    4)
+    <input type="text" v-model="classe4">
+    <input type="text" @input="setPerigo">
+    <div :class="[classe4,{perigo}]"></div>
+    <hr>
+    5)
+    <input type="text" v-model="cor5">
+    <div :style="[estilo5, {backgroundColor:cor5}]"></div>
+    <hr>
+    6)
+    <hr>
+    <div>
+        <button @click="iniciarProgresso">Iniciar</button>
+        <div class="barra-progresso">
+            <div class="progresso" :style="{width}"></div>
+        </div>
+    </div>
+
+
+
+</div>
+
+</body>
+<script src="../vue.js"></script>
+<script>
+
+        new Vue({
+            el:'#app',
+            data:{
+                // titulo: 'usando vue js!',
+                // link: 'http:google.com.br',
+                // linkHtml: '<a href="http://google.com">Google</a>' 
+                nome: 'Everton',
+                idade: 28,
+                imagem: 'http://files.cod3r.com.br/curso-vue/vue.jpg',
+                contador: 0,
+                contador2: 0,
+                x: 0,
+                y: 0,
+                valor: '',
+                titulo: 'vue',
+                val: 0,
+                aplicarC1:false,
+                aplicarC2:false,
+                aplicarC3:false,
+                classeCSS: 'c1',
+                aplicarGirar: true,
+                cor: 'red',
+                largura: 100,
+                altura:'20px',
+                classe1: 'destaque',
+                perigo: true,
+                classe3: '',
+                classe4: '',
+                cor5: '',
+                estilo5: {
+                    width: '100px',
+                    height: '100px'
+                },
+                width:'0'
+            },
+            computed:{
+                resultado(){    
+                    console.log('oi');
+                   return  this.contador >=5 ? 'maior ou igual a 5' : 'menor que 5'
+                },
+                result(){
+                    return this.val == 37 ? ' valor igual' : 'valor diferente'
+                },
+                estilo1(){
+                    return {
+                        c1:this.aplicarC1,
+                        c2:!this.aplicarC1
+                    }
+                },
+                meuEstilo(){
+                    return{
+                        backgroundColor: this.cor,
+                        width: `${this.largura}px`
+                    }
+                }
+            },
+            watch:{
+                contador(novo,antigo){
+                    // console.log(novo,antigo);
+                    setTimeout(()=>{
+                        this.contador = 0
+                    },2000)
+                },
+                result(novo,velho){
+                    setTimeout(()=>{
+                        this.val = 0;
+                    },3000);
+                }
+            },
+            methods:{
+                saudacao: function(){
+                    // return 'Boa dia!'
+                    this.titulo = 'bom dia!!!'
+                    return this.titulo
+                    //não pode ter data e methodo com mesmo nome
+
+                },
+                somar(passo,event){
+                    this.contador+=passo;
+                },
+                subtrair(passo,event){
+                    this.contador-=passo;
+                },
+                atualizarxy(event){
+                    this.x = event.clientX,
+                    this.y = event.clientY
+                },
+                exibirAlerta(){
+                    Alert('estou alertando!')
+                },
+                exibirAlert(){
+                    Alert('estou alertando agora!')
+                },
+                parar(e){
+                    e.stopPropagation()
+                },
+                aumentar(){
+                    this.contador++
+                    
+                },
+                diminuir(){
+                    this.contador--
+                    
+                },
+                iniciarEfeito(){
+                    setInterval(()=>{
+                        this.classe1 = this.classe1 == 'destaque' ? 'encolher' : 'destaque'
+                    },1000)
+                },
+                iniciarProgresso(){
+
+                },
+                setPerigo(){
+                    if(event.target.value == "true"){
+                        this.perigo = true
+                    }else if(event.target.value == "false"){
+                        this.perigo=false
+                    }
+                },
+                iniciarProgresso(){
+                    let valor = 0
+                    const temporizador = setInterval(()=>{
+                        valor++;
+                        this.width = `${valor}%`
+                        if(valor == 100) clearInterval(temporizador)
+                    },100);
+                }
+                // resultado(){    
+                //    return  this.contador >=5 ? 'maior ou igual a 5' : 'menor que 5'
+                // }
+            }
+            
+        })
+</script>
+</html>
